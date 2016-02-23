@@ -1,10 +1,10 @@
 from setuptools import setup, find_packages
 
-version = __import__('class_based_auth_views').__version__
+from class_based_auth_views.version import get_version
 
 setup(
     name="django-class-based-auth-views",
-    version=version,
+    version=get_version(),
     url='http://github.com/stefanfoulis/django-class-based-auth-views',
     license='BSD',
     platforms=['OS Independent'],
