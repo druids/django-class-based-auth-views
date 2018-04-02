@@ -1,9 +1,7 @@
-#-*- coding: utf-8 -*-
-try:
-    import urlparse
-except ImportError:
-    from urllib import parse as urlparse # python3 support
+from urllib import parse as urlparse
+
 from class_based_auth_views.utils import default_redirect
+
 from django.contrib import auth
 from django.contrib.auth import REDIRECT_FIELD_NAME, login
 from django.contrib.auth.forms import AuthenticationForm
@@ -60,7 +58,7 @@ class LoginView(FormView):
         if self.success_url:
             redirect_to = self.success_url
         else:
-            redirect_to = self.request.REQUEST.get(self.redirect_field_name, '')
+            redirect_to = self.request.GET.get(self.redirect_field_name, '')
 
         netloc = urlparse.urlparse(redirect_to)[1]
         if not redirect_to:
@@ -107,8 +105,8 @@ class LogoutView(TemplateResponseMixin, View):
         redirect_field_name = self.get_redirect_field_name()
         context.update({
             "redirect_field_name": redirect_field_name,
-            "redirect_field_value": self.request.REQUEST.get(redirect_field_name),
-            })
+            "redirect_field_value": self.request.GET.get(redirect_field_name),
+        })
         return context
 
     def get_redirect_field_name(self):
