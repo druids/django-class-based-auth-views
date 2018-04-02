@@ -1,14 +1,11 @@
-from __future__ import unicode_literals
-
 import warnings
 
 from django import forms
-from django.utils.text import capfirst
 from django.utils.translation import ugettext, ugettext_lazy as _
 from django.contrib.auth import authenticate, get_user_model
 
 
-class AuthenticationMixin(object):
+class AuthenticationMixin:
     """
     Base class for authenticating users. Extend this to get a form that accepts
     username/password logins.
@@ -27,7 +24,7 @@ class AuthenticationMixin(object):
         The form data comes in via the standard 'data' kwarg.
         """
         self.user_cache = None
-        super(AuthenticationMixin, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
 
         # Set the label for the "username" field.
         user_model = self.get_user_model()

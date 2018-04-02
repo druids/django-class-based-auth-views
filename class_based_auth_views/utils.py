@@ -1,9 +1,7 @@
-# -*- coding: utf-8 -*-
 import functools
-try:
-	import urlparse
-except ImportError:
-	from urllib import parse as urlparse # python3 support
+
+from urllib import parse as urlparse
+
 from django.core.exceptions import SuspiciousOperation
 
 
