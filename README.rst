@@ -20,7 +20,7 @@ Installation
 
 ::
 
-    pip install django-class-based-auth-views
+    pip install django-class-auth-views
 
 
 Basic usage
